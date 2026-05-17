@@ -11,7 +11,7 @@
 			<div class="branding">
 				<div class="logo">
 					<?xml version="1.0" encoding="utf-8"?>
-					<svg fill="#000" height="40px" width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+					<svg height="40px" width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
 						<g>
 							<g>
 								<path
@@ -20,10 +20,21 @@
 							</g>
 						</g>
 					</svg>
+					<div class="name">Ex<span>$</span>pen<span>$</span>e Tracker</div>
 				</div>
-				<div class="name">Ex$pen$e Tracker</div>
 			</div>
-			<div class="theme-switcher">Theme</div>
+			<div class="theme-switcher">
+				<button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 180 180">
+						<g id="toogle-sun">
+							<path
+								d="M153.64,116.36l26.36-26.36-26.36-26.36V26.36h-37.28L90,0l-26.36,26.36H26.36v37.28L0,90l26.36,26.36v37.28h37.28l26.36,26.36,26.36-26.36h37.28v-37.28ZM90,140c-27.61,0-50-22.39-50-50s22.39-50,50-50,50,22.39,50,50-22.39,50-50,50Z"
+							/>
+						</g>
+						<g id="toggle-circle"><path d="M127.5,90c0,20.71-16.79,37.5-37.5,37.5s-37.5-16.79-37.5-37.5,16.79-37.5,37.5-37.5,37.5,16.79,37.5,37.5Z" /></g>
+					</svg>
+				</button>
+			</div>
 		</header>
 		<main class="container">
 			<div class="balance-container">
@@ -76,5 +87,6 @@
 		</footer>
 
 		<script src="js/script.js"></script>
+		<script src="js/theme-toggle.js"></script>
 	</body>
 </html>
