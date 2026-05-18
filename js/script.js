@@ -1,4 +1,5 @@
 const balanceEl = document.getElementById("balance");
+const balanceContainer = document.getElementById("balance-container");
 const incomeEl = document.getElementById("income");
 const expensesEl = document.getElementById("expenses");
 const transactionListEl = document.getElementById("transaction-list");
@@ -60,6 +61,8 @@ function createTransactionElement(transaction) {
 
 function updateSummary() {
     const balance = transactions.reduce((acc, transaction) => acc + transaction.amount, 0);
+
+    balanceContainer.dataset.type = balance === 0 ? "balance-zero" : (balance > 0 ? "balance-positive" : "balance-negative");
 
     const income = transactions
         .filter((transaction) => transaction.amount > 0)
