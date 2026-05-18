@@ -36,45 +36,47 @@
 				</button>
 			</div>
 		</header>
-		<main class="container">
-			<div class="balance-container">
-				<h1>Your Balance</h1>
-				<div class="balance" id="balance">$0.00</div>
+		<main>
+			<div class="container">
+				<div class="balance-container" data-type="balance-positive">
+					<h1>Your Balance</h1>
+					<div class="balance" id="balance">$0.00</div>
 
-				<div class="summary-container">
-					<div class="amount-container" date-type="income-total">
-						<h2>Income</h2>
-						<p class="income" id="income">$0.00</p>
-					</div>
-					<div class="amount-container" date-type="expense-total">
-						<h2>Expenses</h2>
-						<p class="expenses" id="expenses">$0.00</p>
+					<div class="summary-container">
+						<div class="amount-container" data-type="income-total">
+							<h2>Income</h2>
+							<p class="income" id="income">$0.00</p>
+						</div>
+						<div class="amount-container" data-type="expense-total">
+							<h2>Expenses</h2>
+							<p class="expenses" id="expenses">$0.00</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="main-content">
-				<div class="transaction-container">
-					<h3>Transactions</h3>
-					<ul class="transaction-list" id="transaction-list"></ul>
-				</div>
-				<div class="form-container">
-					<h3>Add Transaction</h3>
+				<div class="main-content">
+					<div class="transaction-container">
+						<h3>Transactions</h3>
+						<ul class="transaction-list" id="transaction-list"></ul>
+					</div>
+					<div class="form-container">
+						<h3>Add Transaction</h3>
 
-					<form id="transaction-form">
-						<div class="form-group">
-							<label for="description">Description</label>
-							<input type="text" id="description" placeholder="Enter description..." required />
-						</div>
+						<form id="transaction-form">
+							<div class="form-group">
+								<label for="description">Description</label>
+								<input type="text" id="description" placeholder="Enter description..." required />
+							</div>
 
-						<div class="form-group">
-							<label for="amount">Amount</label>
-							<input type="text" id="amount" placeholder="Enter amount..." step="0.01" required />
-							<small>Use negative (-) for expenses</small>
-						</div>
+							<div class="form-group">
+								<label for="amount">Amount</label>
+								<input type="number" id="amount" placeholder="Enter amount..." step="0.01" required />
+								<small>Use negative (-) for expenses</small>
+							</div>
 
-						<button type="submit">Add Transaction</button>
-					</form>
+							<button type="submit">Add Transaction</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</main>
