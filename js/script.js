@@ -26,7 +26,7 @@ function addTransaction(e) {
     localStorage.setItem("transactions", JSON.stringify(transactions));
     
     updateTransactionList();
-    // updateSummary();
+    updateSummary();
     
     transactionFormEl.reset();
 }
@@ -50,11 +50,49 @@ function createTransactionElement(transaction) {
     li.innerHTML = `
         <span>${transaction.description}</span>
         <span>
-            ${transaction.amount}
+            ${formatCurrency(transaction.amount)}
             <button class="delete-btn" onclick="removeTransaction(${transaction.id})">x</button>
         </span>
     `;
 
     return li;
 }
-// console.log(li);
+
+function updateSummary() {
+    const balance = transactions.reduce((acc, transaction) => acc + transaction.amount, 0);
+
+    const income = transactions
+        .filter((transaction) => transaction.amount > 0)
+        .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+    const expenses = transactions
+        .filter((transaction) => transaction.amount < 0)
+        .reduce((acc, transaction) => acc + transaction.amount, 0);
+
+    // Update UI
+    balanceEl.textContent = formatCurrency(balance);
+    incomeEl.textContent = formatCurrency(income);
+    expensesEl.textContent = formatCurrency(expenses);
+}
+
+function formatCurrency(number) {
+    return new Intl.NumberFormat("en-CA", {
+        style: "currency",
+        currency: "CAD",
+    }).format(number);
+}
+
+function removeTransaction(id) {
+    // Filter out the delete transaction
+    transactions = transactions.filter((transaction) => transaction.id !== id);
+
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+
+    updateTransactionList();
+    updateSummary();
+}
+
+
+// Initial Render
+updateTransactionList();
+updateSummary();
