@@ -23,6 +23,7 @@
 	--clr-green-400: hsl(146 50% 60%);
 	--clr-green-600: hsl(146 50% 40%);
 
+	--clr-red-200: hsl(0 72% 90%);
 	--clr-red-400: hsl(0 72% 60%);
 	--clr-red-500: hsl(0 72% 50%);
 
@@ -57,6 +58,8 @@
 	--form-border-light: var(--clr-blue-300);
 	--form-button-light: var(--clr-blue-500);
 	--form-button-hover-light: var(--clr-blue-600);
+	--scrollbar-gutter-light: var(--clr-neutral-100);
+	--scrollbar-handle-light: var(--clr-neutral-200);
 	--svg-hover-light: var(--clr-white);
 
 	/* For Dark Theme */
@@ -73,6 +76,8 @@
 	--form-border-dark: var(--clr-blue-700);
 	--form-button-dark: var(--clr-blue-600);
 	--form-button-hover-dark: var(--clr-blue-500);
+	--scrollbar-gutter-dark: var(--clr-neutral-500);
+	--scrollbar-handle-dark: var(--clr-neutral-300);
 	--svg-hover-dark: var(--clr-neutral-700);
 
 	color-scheme: light;
@@ -89,6 +94,8 @@
 	--form-border: light-dark(var(--form-border-light), var(--form-border-dark));
 	--form-button: light-dark(var(--form-button-light), var(--form-button-dark));
 	--form-button-hover: light-dark(var(--form-button-hover-light), var(--form-button-hover-dark));
+	--scrollbar-gutter: light-dark(var(--scrollbar-gutter-light), var(--scrollbar-gutter-dark));
+	--scrollbar-handle: light-dark(var(--scrollbar-handle-light), var(--scrollbar-handle-dark));
 	--svg-hover: light-dark(var(--svg-hover-light), var(--svg-hover-dark));
 }
 [data-theme="light"] {
@@ -217,6 +224,7 @@ body[data-theme="dark"] #theme-toggle #toggle-circle {
 .container {
 	background-color: var(--background-secondary);
 	box-shadow: 0 8px 16px rgba(from var(--box-shadow) r g b / 0.05);
+	margin: 0 auto;
 	padding: var(--size-4) var(--size-8);
 	width: 100%;
 	max-width: 1200px;
@@ -316,7 +324,67 @@ body[data-theme="dark"] #theme-toggle #toggle-circle {
 	margin-bottom: var(--size-4);
 }
 
-/* Transaction Stuff TODO */
+.transaction-list {
+	list-style: none;
+	max-height: 448px;
+	overflow-y: auto;
+	padding-inline: var(--size-2) var(--size-5);
+	scrollbar-color: var(--scrollbar-handle) var(--scrollbar-gutter);
+	scrollbar-width: thin;
+}
+
+.transaction {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--background-primary);
+	border-right: 8px solid;
+	border-radius: var(--size-4);
+	box-shadow: 0 4px 8px rgba(from var(--box-shadow) r g b / 0.15);
+	margin-bottom: var(--size-4);
+	padding: var(--size-4) var(--size-4);
+	transition: all 0.2s ease;
+	animation: slideIn 0.3s ease;
+}
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+.transaction:hover {
+	box-shadow: 0 4px 12px rgba(from var(--box-shadow) r g b / 0.3);
+}
+.transaction[data-type="income"] {
+	border-right-color: var(--income-primary);
+}
+.transaction[data-type="expense"] {
+	border-right-color: var(--expense-primary);
+}
+.transaction .delete-btn {
+	background: none;
+	border: none;
+	border-radius: var(--size-1);
+	color: var(--expense-primary);
+	cursor: pointer;
+	font-size: var(--fs-large);
+	margin-left: var(--size-3);
+	padding: 0px 6px 4px;
+	opacity: 0;
+	transition: all 0.2s ease;
+}
+.transaction:hover .delete-btn {
+	opacity: 1;
+}
+.transaction .delete-btn:hover {
+	background-color: var(--clr-red-200);
+}
 
 .form-container {
 	background: linear-gradient(135deg, var(--form-primary), var(--form-secondary));
