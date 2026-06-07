@@ -4,7 +4,7 @@ This is a simple Expense Tracker project using HTML, CSS, and JS.
 
 # Table of contents
 
-- [Kanban Board - FCC](#expense-tracker---fcc)
+- [Expense Tracker - FCC](#expense-tracker---fcc)
     - [Table of contents](#table-of-contents)
     - [Screenshots](#screenshots)
     - [My process](#my-process)
